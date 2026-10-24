@@ -28,6 +28,9 @@ jobs:
         yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses > /dev/null
         $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-34" "build-tools;34.0.0" > /dev/null
         
+    - name: Generate local.properties
+      run: echo "sdk.dir=$ANDROID_HOME" > local.properties
+
     - name: Build with Gradle
       run: ./gradlew assembleDebug
       
